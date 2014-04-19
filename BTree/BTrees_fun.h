@@ -14,11 +14,7 @@ Node<T>* BTree<T>::Creat(Node<T> *bt){
 	return bt;
 }
 
-<<<<<<< HEAD
 //下面的遍历函数都是用的递归方式执行的
-=======
-//涓嬮潰閮芥槸閫氳繃浠ヤ笅閫掑綊鏉ュ疄鐜伴亶鍘嗙殑
->>>>>>> origin/master
 template <class T>
 void BTree<T>::preOrder(Node<T> *bt){
 	if(bt==NULL){
