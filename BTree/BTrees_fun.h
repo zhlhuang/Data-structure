@@ -1,5 +1,6 @@
 template <class T>
 Node<T>* BTree<T>::Creat(Node<T> *bt){
+	
 	T ch;
 	cin>>ch;
 	if(ch=='#'){
@@ -12,6 +13,8 @@ Node<T>* BTree<T>::Creat(Node<T> *bt){
 	}
 	return bt;
 }
+
+//下面都是通过以下递归来实现遍历的
 template <class T>
 void BTree<T>::preOrder(Node<T> *bt){
 	if(bt==NULL){
