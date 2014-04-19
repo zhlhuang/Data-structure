@@ -1,10 +1,20 @@
 template <class T>
 struct Node{
 	T data;
-	Node<T> *lChild,*rChlid;
-}
+	Node<T> *lChild,*rChild;
+};
 template <class T>
 class BTree{
 	public:
-		BTree(){Creat(root);};
+		BTree(){root=Creat(root);};
+		void preOrder(){preOrder(root);};//前序遍历
+		void inOrder(){inOrder(root);};//中序遍历
+		void postOrder(){postOrder(root);};//后序遍历
+	private:
+		Node<T> *root;
+		Node<T> *Creat(Node<T> * bt);
+		void preOrder(Node<T> * bt);
+		void inOrder(Node<T> *bt);
+		void postOrder(Node<T> *bt);
 }
+;
