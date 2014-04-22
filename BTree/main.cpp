@@ -15,9 +15,12 @@ void main(){
 	*/
 	BTree<int> bt;
 
-	int leafarray[4]={1,2,3,4};
+	int leafarray[5]={1,2,3,4,5};//传入数组必须也有序数组
 
-	bt.leafList(leafarray,4);
+	bt.leafList(leafarray,5);
 	bt.printleaf();
+	cout<<endl;
+	bt.leafToBTree();//转化成二叉树
+	bt.preOrder();
 	cout<<endl;
 }

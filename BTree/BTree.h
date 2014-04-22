@@ -15,7 +15,7 @@ class BTree{
 		void leafList(T leafArray[],int n);//这个函数生成一条哈弗曼叶子链表
 		void printleaf();//遍历叶子链表
 		void leafToBTree();//将叶子链表转化成二叉树
-		void dele();//将链表两个从链表去除，（ps 不是删除）
+		void dele(int all);//将链表两个从链表去除，（ps 不是删除）
 		void insert();//在尾部插入合成的节点
 
 

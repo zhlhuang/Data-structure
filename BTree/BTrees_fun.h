@@ -27,7 +27,7 @@ void BTree<T>::preOrder(Node<T> *bt){
 	if(bt==NULL){
 		return;
 	}else{
-		cout<<bt->data;
+		cout<<bt->data<<"-";
 		preOrder(bt->lChild);
 		preOrder(bt->rChild);
 	}
@@ -65,8 +65,13 @@ void BTree<T>::leafList(T leafArray[],int n){
 		Node<T> *s;
 		s=new Node<T>;
 		s->data=leafArray[i];
+
 		s->next=NULL;
+		s->lChild=NULL;
+		s->rChild=NULL;
+
 		p->next=s;
+		leafrear=s;//尾指针指向s（最后一个结点）
 		p=p->next;
 	}
 }
@@ -82,9 +87,33 @@ void BTree<T>::printleaf(){
 template <class T>
 void BTree<T>::leafToBTree(){
 	Node<T> *p;
-	p=leaf->next;
-	while(p!=NULL && p->next!=NULL){
+	while(leaf->next!=NULL && leaf->next->next!=NULL){
+		//叶子链表中，前两个元素不能为空
 		int all;
+		p=leaf->next;
 		all=p->data+p->next->data;
+		dele(all);//将头两个元素从链表中出去  并生成新节点
 	}
+	if(leaf->next->next==NULL){
+		root=leaf->next;
+		delete leaf;
+	}
+}
+
+template <class T >
+void BTree<T>::dele(int all){
+	Node<T> *p;
+	p=leaf;
+		//如果第三个结点不为空
+		Node<T> *s;
+		s=new Node<T>;//创建一个新结点
+		s->data=all;
+		s->next=NULL;
+		s->lChild=p->next;
+		s->rChild=p->next->next;
+		//有最小两个节点生成一个新节点
+
+		leafrear->next=s;
+		leaf->next=p->next->next->next;//直接跳到第三个节点
+		leafrear=s;
 }
