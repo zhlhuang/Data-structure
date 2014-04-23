@@ -28,13 +28,13 @@ void LinkList<T>::PrintList(){
 	Node<T> *p=head->next;
 	if(flag){
 		while (p!=rear){
-			cout<<p->data<<endl;
+			cout<<p->data<<"  ";
 			p=p->next;
 		}
 		cout<<rear->data<<endl;
 		}else{
 		while (p!=NULL){
-			cout<<p->data<<endl;
+			cout<<p->data<<"  ";
 			p=p->next;
 		}
 		}
@@ -51,7 +51,7 @@ void LinkList<T>::Delete(int i){
 	if(p==NULL) throw "位置";
 	else{
 		q=p->next;
-		cout<<"删除节点："<<q->data<<endl;
+	//	cout<<"删除节点："<<q->data<<"  ";
 		p->next=q->next;
 		delete q;
 	}
@@ -126,7 +126,7 @@ Node<T> * LinkList<T>::jose_f(int n,Node<T>* p){
 		p=p->next;
 		j++;
 	}
-	cout<<p->data<<endl;
+	cout<<p->data<<"  ";
 	q=p->next;
 	head->next=q;
 	Delete(look_val(p->data));

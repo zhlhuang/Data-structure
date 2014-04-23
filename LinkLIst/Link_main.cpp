@@ -11,6 +11,7 @@ void main(){
 	cl.turn();
 	cl.PrintList();
 	cl.Jose();
+	cout<<endl;
 	//askfjsdlkajflaksdj
 }
 ;
