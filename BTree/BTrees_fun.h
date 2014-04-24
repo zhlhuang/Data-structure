@@ -113,7 +113,29 @@ void BTree<T>::dele(int all){
 		s->rChild=p->next->next;
 		//有最小两个节点生成一个新节点
 
-		leafrear->next=s;
+		insert(s);//按顺序插入叶子链表中
 		leaf->next=p->next->next->next;//直接跳到第三个节点
 		leafrear=s;
+}
+
+template <class T>
+void BTree<T>::insert(Node<T> *s){
+	T a;
+	a=s->data;
+	Node<T> *p;
+	p=leaf;
+	while(p!=NULL){
+		if(p->next!=NULL){
+			if(a<=p->next->data){//如果新生成节点 不大于 当前链表中的叶子，就把新节点插入该叶子前
+				s->next=p->next;
+				p->next=s;
+				break;
+			}else{  // 不满足不大于条件，检测下一个叶子
+				p=p->next;
+			}
+		}else{ //比所有叶子都大 直接插入叶子链表最后
+			p->next=s;
+			break;
+		}
+	}
 }
