@@ -2,21 +2,32 @@
 using namespace std;
 #include "stack.h"
 #include "stack_fun.h"
-int flag(char a,char b){
-	if(a=='*' || a=='/'){
-		if(b=='*' || b=='/'){//如果运算等级一样大，则返回1
-			return 1;
+int flag(char a,char b){//a是栈顶运算符 b是当前运算符
+	if(b==')'){
+		if(a=='('){
+			return 4;
 		}else{
-			return 2;//如果a大于b，这返回2   //（当前字符比s栈顶小）
+			return 2;
 		}
-	}else if(a=='+' || a=='-'){
-		if(b=='*' || b=='/'){//如果a小于b 则返回3
-			return 3;//（当前字符比s栈顶大）
-		}else if(b=='+' || b=='-'){
-			return 1;
-		}
+	}
+	else if(b=='('){
+		return 3;
 	}else{
-		return 0;
+		if(a=='*' || a=='/'){
+			if(b=='*' || b=='/'){//如果运算等级一样大，则返回1
+				return 1;
+			}else{
+				return 2;//如果a大于b，这返回2   //（当前字符比s栈顶小）
+			}
+		}else if(a=='+' || a=='-'){
+			if(b=='*' || b=='/'){//如果a小于b 则返回3
+				return 3;//（当前字符比s栈顶大）
+			}else if(b=='+' || b=='-'){
+				return 1;
+			}
+		}else{
+			return 3;
+		}
 	}
 }
 void main(){
@@ -35,8 +46,9 @@ void main(){
     cin>>ch;
 	int i=0;
 	while(ch[i]!='\0' && i<stacksize){
-		if(ch[i]=='+' || ch[i]=='-' || ch[i]=='*' || ch[i]=='/'){
+		if(ch[i]=='+' || ch[i]=='-' || ch[i]=='*' || ch[i]=='/'||ch[i]=='('||ch[i]==')'){
 		//	cout<<"^"<<flag(s.getpop(1),ch[i])<<"^"<<endl;
+			cout<<" ";
 			int f=flag(s.getpop(1),ch[i]);
 
 			if(f==1){//运算级相等
@@ -51,8 +63,8 @@ void main(){
 			}else if(f==2){//当前运算符小于栈顶运算符，栈顶元素出栈，不处理下一个
 				cout<<s.pop(1);
 
-			}else{//当栈顶元素是#时，就是初始化运算符，最低等级
-				s.push(1,ch[i]);
+			}else if(f==4){//如果是左右括号相遇，则输出（ 跳过 ）
+				s.pop(1);
 				i++;
 			}
 		}else{
