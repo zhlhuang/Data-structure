@@ -6,7 +6,7 @@ void main(){
 	char a[10]={'z','x','c','v','b','n','m','s','a','f'};
 	MGraph<char> m(a,10,5);
 	for(int i=0;i<10;i++){
-		m.DFST(i);
+		m.BFST(i);
 	}
 	cout<<endl;
 }

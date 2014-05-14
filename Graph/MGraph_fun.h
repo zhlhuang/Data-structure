@@ -33,12 +33,33 @@ template <class T>
 void MGraph<T>::DFST(int v){
 	if(visited[v]==0){
 			cout<<vertex[v];
-	visited[v]=1;
+        	visited[v]=1;
 	}
 	for(int i=0;i<vertexNum;i++){
 		if(arc[v][i]==1 && visited[i]==0){
-
 			DFST(i);
+		}
+	}
+}
+
+template <class T>
+void MGraph<T>::BFST(int v){
+	int front=-1;
+	int rear=-1;
+	if(visited[v]==0){
+	cout<<vertex[v];
+	visited[v]=1;
+	}
+	int Q[MaxSize];
+	Q[++rear]=v;
+	while(front!=rear){
+		v=Q[++front];
+		for(int j=0;j<vertexNum;j++){
+			if(arc[v][j]==1 && visited[j]==0){
+				cout<<vertex[j];
+				visited[j]=1;
+				Q[++rear]=j;
+			}
 		}
 	}
 }
