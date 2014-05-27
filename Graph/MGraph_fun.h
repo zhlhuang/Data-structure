@@ -13,7 +13,7 @@ MGraph<T>::MGraph(T a[],int n,int e){
 		}
 	}
 
-	int k=0;
+/*	int k=0;
 	while(k<arcNum){ //输出边依附的两个顶点
 		int i,j;
 		cout<<"请输入第"<<k+1<<"边";
@@ -25,7 +25,8 @@ MGraph<T>::MGraph(T a[],int n,int e){
 		}else{
 			cout<<"输出有误";
 		}
-	}
+	
+	}	*/
 
 }
 
